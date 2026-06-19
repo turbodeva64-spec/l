@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mood Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      max-width: 500px;
+      margin: auto;
+    }
+    input, select, button {
+      margin: 10px;
+      padding: 10px;
+      width: 80%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>How Are You Feeling?</h1>
+    <form id="moodForm">
+      <input type="text" id="name" placeholder="Enter your name" required>
+      <select id="mood" required>
+        <option value="">Select your mood</option>
+        <option value="happy">😊 Happy</option>
+        <option value="sad">😢 Sad</option>
+        <option value="lonely">🥺 Lonely</option>
+      </select>
+      <button type="submit">Check</button>
+    </form>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    document.getElementById("moodForm").addEventListener("submit", function(event){
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const mood = document.getElementById("mood").value;
+      let message = "";
+
+      if(mood === "happy"){
+        message = `Hi ${name}, that's wonderful! 🌟 What made you smile today?`;
+      } else if(mood === "sad"){
+        message = `Hey ${name}, I'm sorry you're feeling down. 💙 What usually helps you feel better?`;
+      } else if(mood === "lonely"){
+        message = `Hi ${name}, loneliness can be tough. 🤗 Who would you like to connect with right now?`;
+      } else {
+        message = "Please select a mood.";
+      }
+
+      document.getElementById("result").innerText = message;
+    });
+  </script>
+</body>
+</html>
